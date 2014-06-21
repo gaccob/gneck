@@ -1,10 +1,11 @@
 #!/bin/sh
 
 idx=0
-max=4
+max=64
 src_domain="www.qiushibaike.com"
 dst_domain="localhost\/neck"
 url=""
+url_bak="bak"
 tmp=".raw"
 dst="/opt/local/share/nginx/html/neck"
 template_page="template.page"
@@ -22,6 +23,7 @@ function escape()
 function fetch_next_url()
 {
     src=$1
+    url_bak=$url
     while read line
     do
         next=`echo $line | grep "a href" | grep "下一页"`;
@@ -89,6 +91,7 @@ function fetch_data()
                     -e 's/TAG_IDX/'$idx'/g'         \
                     -e 's/TAG_DST_DOMAIN/'$dst_domain'/g'   \
                     $template_page > $file
+                echo "--> $idx"
             fi
         fi
     done < $src.mid
@@ -96,9 +99,13 @@ function fetch_data()
 }
 
 # fetch max by loop
-rm $dst/*
 while [ $idx -lt $max ]
 do
+    if [ "$url_bak" == "$url" ]; then
+        max=$idx
+        break;
+    fi
+    echo "$src_domain""$url"
     curl -o $tmp "$src_domain""$url"
     fetch_next_url $tmp
     fetch_data $tmp
