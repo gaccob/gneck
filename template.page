@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>活动活动脖子</title>
+</head>
+
+<style type="text/css">
+    body {
+        font-family: "Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
+        font-size: 14px;
+        color: #503e2c;
+        background-color: #ece5d8;
+        padding-top: 0;
+        width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: auto;
+        margin-top: auto;
+        height: 100%;
+    }
+
+    div {
+        display: block;
+    }
+
+    img {
+        border: 0;
+    }
+
+    .block {
+        border-radius: 2px;
+        background: white;
+        float: relative;
+    }
+
+    .author {
+        font-size: 16px;
+        line-height: 100%;
+        color: #9b8878;
+        text-decoration: none;
+    }
+
+    .article {
+        font-size: 20px;
+        word-break: break-all;
+        line-height: 160%;
+    }
+
+    .thumb {
+        margin: 10px 0;
+    }
+
+    .blank {
+        padding-left: 20px;
+        padding-top: 10px;
+        padding-right: 20px;
+        padding-bottom: 10px;
+        position: relative;
+    }
+
+</style>
+
+<body>
+
+    <div id="main" class="block" onclick="change()">
+        <div class="author blank">TAG_AUTHOR</div>
+        <div class="article blank">TAG_CONTENT</div>
+        <div class="thumb blank"><img src="TAG_PICTURE"></div>
+
+        <script type="text/javascript">
+            var main = document.getElementById("main");
+            var h = main.offsetHeight;
+            var w = main.offsetWidth;
+            var shift = (w-h)/2;
+            main.style.webkitTransform = "translate(0, " + shift + "px) rotate(TAG_DIRECTIONdeg)";
+        </script>
+    </div>
+
+    <script type="text/javascript">
+        function change() {
+            location.replace("http://TAG_DST_DOMAIN/TAG_IDX.html");
+        }
+    </script>
+
+</body>
+
+</html>
+
