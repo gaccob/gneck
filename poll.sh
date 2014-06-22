@@ -102,8 +102,11 @@ function fetch_data()
 while [ $idx -lt $max ]
 do
     if [ "$url_bak" == "$url" ]; then
-        max=`expr $idx / 2`;
-        max=`expr $max + $max`;
+        if [ $((idx % 2)) == 1 ]; then
+            max=$((idx - 1))
+        else
+            max=$idx
+        fi
         break;
     fi
     echo "$src_domain""$url"
@@ -113,6 +116,8 @@ do
 done
 rm $tmp
 
+echo "max: " $max
+
 # index
 file=$dst/index.html
 sed -e 's/TAG_MAX/'$max'/g' \
@@ -120,5 +125,5 @@ sed -e 's/TAG_MAX/'$max'/g' \
     $template_index > $file
 
 # make script happy
-mv $dst/0.html $dst/$idx.html
+mv $dst/0.html $dst/$max.html
 
