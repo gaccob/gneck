@@ -102,7 +102,8 @@ function fetch_data()
 while [ $idx -lt $max ]
 do
     if [ "$url_bak" == "$url" ]; then
-        max=$idx
+        max=`expr $idx / 2`;
+        max=`expr $max + $max`;
         break;
     fi
     echo "$src_domain""$url"
