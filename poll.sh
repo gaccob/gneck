@@ -10,7 +10,7 @@ tmp=".raw"
 dst="/opt/local/share/nginx/html/neck"
 template_page="template.page"
 template_index="template.index"
-dir="90"
+dir="left"
 
 function escape()
 {
@@ -77,10 +77,10 @@ function fetch_data()
 
             # dump
             if [ -n "$picture" ]; then
-                if [ "$dir" == "90" ]; then
-                    dir="-90"
+                if [ "$dir" == "left" ]; then
+                    dir="right"
                 else
-                    dir="90"
+                    dir="left"
                 fi
                 file=$dst/$idx.html
                 idx=`expr $idx + 1`

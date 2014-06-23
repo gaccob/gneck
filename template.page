@@ -59,26 +59,41 @@
         position: relative;
     }
 
+    .right {
+        transform: rotate(90deg) translate(50%, -50%);
+        -ms-transform: rotate(90deg) translate(50%, -50%);
+        -moz-transform: rotate(90deg) translate(50%, -50%);
+        -webkit-transform: rotate(90deg) translate(50%, -50%);
+        transform-origin: center top 0px;
+        -ms-transform-origin: center top 0px;
+        -moz-transform-origin: center top 0px;
+        -webkit-transform-origin: center top 0px;
+    }
+
+    .left {
+        transform: rotate(-90deg) translate(-50%, -50%);
+        -ms-transform: rotate(-90deg) translate(-50%, -50%);
+        -moz-transform: rotate(-90deg) translate(-50%, -50%);
+        -webkit-transform: rotate(-90deg) translate(-50%, -50%);
+        transform-origin: center top 0px;
+        -ms-transform-origin: center top 0px;
+        -moz-transform-origin: center top 0px;
+        -webkit-transform-origin: center top 0px;
+    }
+
 </style>
 
 <body>
 
-    <div id="main" class="block" onclick="change()">
+    <div id="main" class="block TAG_DIRECTION" onclick="change()">
         <div class="author blank">TAG_AUTHOR</div>
         <div class="article blank">TAG_CONTENT</div>
-        <div class="thumb blank"><img src="TAG_PICTURE" onload="rotate()"></div>
+        <div class="thumb blank"><img src="TAG_PICTURE"></div>
     </div>
 
     <script type="text/javascript">
         function change() {
             location.replace("http://TAG_DST_DOMAIN/TAG_IDX.html");
-        }
-        function rotate() {
-            var main = document.getElementById("main");
-            var h = main.offsetHeight;
-            var w = main.offsetWidth;
-            var shift = (w-h)/2;
-            main.style.webkitTransform = "translate(0, " + shift + "px) rotate(TAG_DIRECTIONdeg)";
         }
     </script>
 
