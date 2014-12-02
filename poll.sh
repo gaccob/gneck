@@ -125,5 +125,5 @@ sed -e 's/TAG_MAX/'$max'/g' \
     $template_index > $file
 
 # make script happy
-mv $dst/0.html $dst/$max.html
+mv -f $dst/0.html $dst/$max.html
 
