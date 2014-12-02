@@ -95,7 +95,7 @@ function fetch_data()
             fi
         fi
     done < $src.mid
-    rm $src.mid
+    rm -rf $src.mid
 }
 
 # fetch max by loop
@@ -114,7 +114,7 @@ do
     fetch_next_url $tmp
     fetch_data $tmp
 done
-rm $tmp
+rm -rf $tmp
 
 echo "max: " $max
 
