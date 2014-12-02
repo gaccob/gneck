@@ -110,7 +110,7 @@ do
         break;
     fi
     echo "$src_domain""$url"
-    curl -o $tmp "$src_domain""$url"
+    curl -s -o $tmp "$src_domain""$url"
     fetch_next_url $tmp
     fetch_data $tmp
 done
